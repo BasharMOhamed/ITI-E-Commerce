@@ -1,0 +1,24 @@
+<div class="home">
+  <div class="search">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search for product" aria-label="Search"
+      [(ngModel)]="searchProduct" (ngModelChange)="searchForProducts()">
+  </div>
+  <div class="row row-cols-2 row-cols-lg-6 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let product of products;">
+      <div class="card">
+        <img src={{product.thumbnail}} class="card-img-top" alt={{product.title}}>
+        <div class="card-body">
+          <h5 class="card-category">{{product.category | titlecase}} </h5>
+          <h6 class="card-title">{{product.title | titlecase}} </h6>
+        </div>
+        <div class="card-footer d-flex">
+          <div class="card-price">{{product.price}} USD</div>
+          <div class="card-rating"><mat-icon aria-hidden="false" aria-label="Example star icon" fontIcon="star"
+              style="color: #ffeb3b;"></mat-icon>
+            {{product.rating}}</div>
+        </div>
+      </div>
+    </div>
+    <h2 *ngIf="products.length == 0">No Products Found!</h2>
+  </div>
+</div>
