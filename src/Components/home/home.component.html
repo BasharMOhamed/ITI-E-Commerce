@@ -20,5 +20,11 @@
       </div>
     </div>
   </div>
+  <div class="row page-btns" *ngIf="products.length != 0">
+    <button class="left prev btn btn-outline-success col-lg-2 col-3" (click)="prevPage()"
+      [disabled]="currentPage == 1">Previous</button>
+    <button class="right next btn btn-outline-success col-lg-2 col-3" (click)="nextPage()"
+      [disabled]="currentPage == 7">Next</button>
+  </div>
   <h2 class="noProduct" *ngIf="products.length == 0">No Products Found!</h2>
 </div>

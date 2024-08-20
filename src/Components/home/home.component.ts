@@ -3,6 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {Component, OnInit } from '@angular/core';
 import { productsService } from '../../app/services/products.service';
 import { FormsModule } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,30 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit{
   products: any[] = [];
+  currentPage:number = 1;
+  page!: BehaviorSubject<number>;
+  totalPages!: number;
+
   searchProduct!:string;
-  constructor(private productServ: productsService) {}
+  constructor(private productServ: productsService) {
+    this.page = new BehaviorSubject<number>(this.currentPage);
+  }
   // hook
   ngOnInit() {
-    this.productServ.getAllProducts().subscribe((response) => {
+    this.page.subscribe((newPage)=> {
+      this.productServ.getAllProducts(newPage).subscribe((response) => {
       this.products=response.products;
     });
+    })
+
+  }
+  prevPage(){
+    if (this.currentPage > 1)
+      this.page.next(--this.currentPage);
+  }
+  nextPage(){
+    if (this.products[this.products.length-1].id != 194)
+      this.page.next(++this.currentPage);
   }
 
   searchForProducts() {

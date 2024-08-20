@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class productsService {
   constructor(private http: HttpClient) {}
 
-  getAllProducts(): Observable<any> {
-    return this.http.get<any>(`https://dummyjson.com/products`);
+  getAllProducts(page:number =1): Observable<any> {
+    return this.http.get<any>(`https://dummyjson.com/products?skip=${(page-1)*30}`);
   }
 
   getProductById(productId: number): Observable<any> {
