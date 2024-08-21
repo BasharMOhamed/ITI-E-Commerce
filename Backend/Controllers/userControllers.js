@@ -26,7 +26,9 @@ const createUser = async (req, res) => {
 
 //                LOGIN
 const login = async (req, res) => {
+  console.log("HEREEEEEEEEEEEEEEEEEEEE");
   const { email, password } = req.body;
+  console.log(email);
   if (!email || !password) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }
