@@ -24,4 +24,11 @@ export class ProductDetailsComponent {
       this.product = response;
     });
   }
+
+
+  addToCart()
+  {
+    
+  }
+
 }
