@@ -133,5 +133,19 @@
               </div>
         </div>
     </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="rating" class="form-label">rating</label>
+          <input type="text" class="form-control" id="rating">
+        </div>
+        <div class="mb-3">
+          <label for="comment" class="form-label">comment</label>
+          <textarea class="form-control" id="comment" rows="3"></textarea>
+        </div>
+        <button class="btn btn-success w-100" (click)="addReview()">add rating</button>
+      </div>
+    </div>
 </div>
 

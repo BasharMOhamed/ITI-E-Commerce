@@ -31,4 +31,11 @@ export class ProductDetailsComponent {
     
   }
 
+  addReview()
+  {
+    let rating = (<HTMLInputElement>document.getElementById("rating")).value;
+    let comment = (<HTMLInputElement>document.getElementById("comment")).value;
+
+  }
+
 }
