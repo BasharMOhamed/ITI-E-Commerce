@@ -1,0 +1,41 @@
+<div
+  class="container d-flex align-items-center justify-content-center min-vh-100"
+>
+  <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px">
+    <h3 class="text-center mb-4">Login</h3>
+    <form class="needs-validation" (ngSubmit)="onSubmit()">
+      <div class="mb-3 has-validation">
+        <label for="validationCustomEmail" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="validationCustomEmail"
+          placeholder="Enter your email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        />
+        <div class="valid-feedback">Please choose an email.</div>
+      </div>
+      <div class="mb-5">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        />
+      </div>
+      <button class="btn btn-primary w-100">Login</button>
+    </form>
+    <hr />
+    <div class="text-center">
+      <a routerLink="../register" class="text-decoration-none">Register?</a>
+    </div>
+  </div>
+</div>
