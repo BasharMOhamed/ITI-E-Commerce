@@ -6,7 +6,9 @@
   <div class="row row-cols-2 row-cols-lg-6 row-cols-md-4 g-4">
     <div class="col" *ngFor="let product of products;">
       <div class="card">
-        <img src={{product.thumbnail}} class="card-img-top" alt={{product.title}}>
+        <a [routerLink]="['/productDetails', product.id]">
+          <img src={{product.thumbnail}} class="card-img-top" alt={{product.title}}>
+        </a>
         <div class="card-body">
           <h5 class="card-category">{{product.category | titlecase}} </h5>
           <h6 class="card-title">{{product.title | titlecase}} </h6>

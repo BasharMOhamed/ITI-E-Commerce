@@ -3,11 +3,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {Component, OnInit } from '@angular/core';
 import { productsService } from '../../app/services/products.service';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, TitleCasePipe, MatIconModule, FormsModule],
+  imports: [NgFor, NgIf, TitleCasePipe, MatIconModule, FormsModule,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
