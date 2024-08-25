@@ -13,7 +13,7 @@ const {
 } = require("../Middlewares/authMiddleware");
 const router = express.Router();
 
-router.route("/").post(createUser);
+router.route("/register").post(createUser);
 
 router.post("/auth", login);
 router.post("/logout", logoutCurrentUser);

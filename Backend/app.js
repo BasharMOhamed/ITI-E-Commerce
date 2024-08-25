@@ -6,7 +6,7 @@ const userRoutes = require("./Routes/userRoutes.js");
 const productRoutes = require("./Routes/productRoutes.js"); 
 //const {insertDataFromJson} = require("./Controllers/productController.js");
 const app = express();
-const PORT = 3200;
+const PORT = 4100;
 
 app.use(cors());
 app.use(express.json());

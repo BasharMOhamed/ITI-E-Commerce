@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
 import { productsService } from './services/products.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterService } from '../Services/register.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, productsService],
+  providers: [AuthService, productsService,RegisterService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
