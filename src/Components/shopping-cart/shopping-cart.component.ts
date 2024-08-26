@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CartService } from '../../app/services/cart.service';
 import { NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [NgClass, CommonModule],
+  imports: [NgClass, CommonModule,NavbarComponent],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
 })

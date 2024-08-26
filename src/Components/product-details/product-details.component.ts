@@ -4,11 +4,12 @@ import { productsService } from '../../app/services/products.service';
 import { CartService } from '../../app/services/cart.service';
 import { response } from 'express';
 import { BehaviorSubject } from 'rxjs';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
