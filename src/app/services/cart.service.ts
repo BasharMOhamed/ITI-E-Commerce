@@ -20,7 +20,7 @@ export class CartService {
     )
   }
   getCart(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.backendUrl}`);
+    return this.http.get<CartItem[]>(`${this.backendUrl}/cart`);
   }
 
   addToCart(productId: string, quantity: number): Observable<any> {
@@ -28,7 +28,7 @@ export class CartService {
   }
 
   removeFromCart(productId: string): Observable<any> {
-    return this.http.delete(`${this.backendUrl}/${productId}`);
+    return this.http.delete(`${this.backendUrl}/cart/${productId}`);
   }
 
 }
