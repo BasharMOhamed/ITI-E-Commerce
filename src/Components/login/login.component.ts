@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +13,13 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
     console.log(this.email, this.password);
     this.auth.login(this.email, this.password).subscribe((response) => {
-      console.log('Login successful', response);
+      // console.log('Login successful', response);
+      this.router.navigate(['/home']);
     });
   }
 }
