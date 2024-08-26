@@ -43,7 +43,10 @@ export class ProductDetailsComponent {
 
   addRating()
   {
-    
+    this.productServ.updateRating(this.id,this.rating).subscribe((response)=>
+    {
+      console.log(response);
+    })
   }
 
   add()

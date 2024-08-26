@@ -19,5 +19,10 @@ export class productsService {
   searchForProduct(productSearch: string): Observable<any> {
     return this.http.get<any>(`https://dummyjson.com/products/search?q=${productSearch}`);
   }
+
+  updateRating(productId:number,newrating:number)
+  {
+    return this.http.put<any>(`https://localhost:4100/api/product/${productId}`, {"rating":newrating});
+  }
 }
 
