@@ -24,7 +24,7 @@ export class CartService {
   }
 
   addToCart(productId: string, quantity: number): Observable<any> {
-    return this.http.post(`${this.backendUrl}/${productId}`, { quantity });
+    return this.http.post(`${this.backendUrl}/cart/${productId}`, { quantity });
   }
 
   removeFromCart(productId: string): Observable<any> {
