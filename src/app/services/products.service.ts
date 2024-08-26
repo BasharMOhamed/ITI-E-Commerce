@@ -8,16 +8,16 @@ import { Observable } from 'rxjs';
 export class productsService {
   constructor(private http: HttpClient) {}
 
-  getAllProducts(page:number =1): Observable<any> {
-    return this.http.get<any>(`https://dummyjson.com/products?skip=${(page-1)*30}`);
+  getAllProducts(): Observable<any> {
+    return this.http.get<any>(`http://localhost:4100/api/product/allProducts`);
   }
 
   getProductById(productId: number): Observable<any> {
-    return this.http.get<any>(`https://dummyjson.com/products/${productId}`);
+    return this.http.get<any>(`http://localhost:4100/api/product/${productId}`);
   }
 
   searchForProduct(productSearch: string): Observable<any> {
-    return this.http.get<any>(`https://dummyjson.com/products/search?q=${productSearch}`);
+    return this.http.get<any>(`http://localhost:4100/api/product/search/${productSearch}`);
   }
 
   updateRating(productId:number,newrating:number)

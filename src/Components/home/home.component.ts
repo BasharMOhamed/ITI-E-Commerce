@@ -18,9 +18,11 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  products: any[] = [];
+  products: any[] = []; 
+  allProducts: any[] = []; 
   searchProduct!:string;
   currentPage: number = 1;
+  itemsPerPage: number = 10; 
   page!: BehaviorSubject<number>;
   totalPages!: number;
 
@@ -29,27 +31,33 @@ export class HomeComponent implements OnInit {
   }
   // hook
   ngOnInit() {
-    this.page.subscribe((newPage) => {
-      this.productServ.getAllProducts(newPage).subscribe((response) => {
-        this.products = response.products;
-      });
+    this.productServ.getAllProducts().subscribe((response) => {
+      this.allProducts = response; 
+      this.products = this.allProducts.slice(0, this.itemsPerPage); 
+      this.totalPages = Math.ceil(this.allProducts.length / this.itemsPerPage); 
     });
 
     this.cartService.init();
   }
   prevPage() {
-    if (this.currentPage > 1) this.page.next(--this.currentPage);
+    if (this.currentPage > 1) {
+      this.page.next(--this.currentPage);
+      this.products = this.allProducts.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage); // Use allProducts
+    }
   }
   nextPage() {
-    if (this.products[this.products.length - 1].id != 194)
+    if (this.currentPage < this.totalPages) {
       this.page.next(++this.currentPage);
+      this.products = this.allProducts.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage); // Use allProducts
+    }
   }
 
   searchForProducts() {
     this.productServ
       .searchForProduct(this.searchProduct)
       .subscribe((response) => {
-        this.products = response.products;
+        console.log(response)
+        this.products = response;
       });
   }
   addToCart(product: Product){
@@ -71,4 +79,6 @@ export class HomeComponent implements OnInit {
       return false;
     }
   }
+
+
 }
