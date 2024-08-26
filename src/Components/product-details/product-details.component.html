@@ -38,7 +38,18 @@
             <h6 class="fw-light"> brand: {{product.brand}}</h6>
             } 
             <h6>Price: {{product.price}} </h6>
-            <button class="btn btn-success w-100" (click)="addToCart()">add to cart</button>
+            <div class = "row">
+              <div class="col-3">
+                <button class="btn btn-success w-100" (click)="add()">+</button>
+              </div>
+              <div class="col-6">
+                <h3 class="text-center">{{quantity}}</h3>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-success w-100" (click)="remove()">-</button>
+              </div>
+            </div>
+                <button class="btn btn-success w-100" (click)="addToCart()">add to cart</button>
         </div>
     </div>
 
@@ -119,6 +130,7 @@
                                     <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
                                     <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
                                     <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
                                   }
                                   </h5>
                                   <p class="card-text fw-light">date: {{reviewer.date}}</p>
@@ -137,14 +149,14 @@
     <div class="row">
       <div class="col-6">
         <div class="mb-3">
-          <label for="rating" class="form-label">rating</label>
-          <input type="text" class="form-control" id="rating">
+          <label for="rating" class="form-label">Rating: </label>
+          <span (click) = "rate(1)"><i class="bi bi-star-fill text-secondary fs-5" id="1"></i></span>
+          <span (click) = "rate(2)"><i class="bi bi-star-fill text-secondary fs-5" id="2"></i></span>
+          <span (click) = "rate(3)"><i class="bi bi-star-fill text-secondary fs-5" id="3"></i></span>
+          <span (click) = "rate(4)"><i class="bi bi-star-fill text-secondary fs-5" id="4"></i></span>
+          <span (click) = "rate(5)"><i class="bi bi-star-fill text-secondary fs-5" id="5"></i></span>
         </div>
-        <div class="mb-3">
-          <label for="comment" class="form-label">comment</label>
-          <textarea class="form-control" id="comment" rows="3"></textarea>
-        </div>
-        <button class="btn btn-success w-100" (click)="addReview()">add rating</button>
+        <button class="btn btn-success w-100" (click)="addRating()">Add Rating</button>
       </div>
     </div>
 </div>
