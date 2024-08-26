@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
 
+  private backendUrl = 'http://localhost:4100/api/cart';
   items: CartItem[] = [];
   constructor(private http: HttpClient) { }
 
@@ -18,23 +19,16 @@ export class CartService {
     }
     )
   }
-  getCart(): Observable<CartItem[]>{
-    return this.http.get<CartItem[]>(
-      `https://localhost:4200/cart`
-    );
+  getCart(): Observable<CartItem[]> {
+    return this.http.get<CartItem[]>(`${this.backendUrl}`);
   }
 
-  addToCart(productId: string, quantity: number): Observable<any>{
-    return this.http.post(
-      `https://localhost:4200/cart/${productId}`,
-      { quantity }
-    );
+  addToCart(productId: string, quantity: number): Observable<any> {
+    return this.http.post(`${this.backendUrl}/${productId}`, { quantity });
   }
 
-  removeFromCart(productId: string): Observable<any>{
-    return this.http.delete(
-      `https://localhost:4200/cart/${productId}`
-    );
+  removeFromCart(productId: string): Observable<any> {
+    return this.http.delete(`${this.backendUrl}/${productId}`);
   }
 
 }

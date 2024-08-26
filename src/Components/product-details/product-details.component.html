@@ -1,0 +1,151 @@
+<div class = "container-fluid">
+    <div class="row">
+        <div class="col-6">
+
+            <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src={{product.images[0]}} class="d-block w-100" alt="...">
+                      </div>
+                    @for(image of product.images; track image ; let i =$index)
+                    {
+                        @if(i != 0)
+                        {
+                        <div class="carousel-item">
+                            <img src={{product.images[i]}} class="d-block w-100" alt="...">
+                          </div>
+                        }
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+
+
+
+        <div class="col-6 m-auto">
+            <h1 class="fw-bold">{{product.title}}</h1>
+            <h5 class="fw-normal">{{product.description}}</h5>
+            @if(product.brand)
+            {
+            <h6 class="fw-light"> brand: {{product.brand}}</h6>
+            } 
+            <h6>Price: {{product.price}} </h6>
+            <button class="btn btn-success w-100" (click)="addToCart()">add to cart</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="accordion accordion-flush" id="accordionFlushExample" >
+                <div class="accordion-item" style="background-color: #eee;">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #eee;">
+                      Product details
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <h6 class="fw-light fs-6">Category: {{product.category}}</h6>
+                        <h6 class="fw-light fs-6">Left in stock: {{product.stock}}</h6>
+                        <h6 class="fw-light fs-6">Weight: {{product.weight}}</h6>
+                        <h6 class="fw-light fs-6">Warranty Information: {{product.warrantyInformation}}</h6>
+                        <h6 class="fw-light fs-6">Shipping Information: {{product.shippingInformation}}</h6>
+                        <h6 class="fw-light fs-6">Return Policy: {{product.returnPolicy}}</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item" style="background-color: #eee;">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="background-color: #eee;">
+                        Dimensions
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <h6 class="fw-light fs-6">Width: {{product.dimensions.width}}</h6>
+                        <h6 class="fw-light fs-6">Height: {{product.dimensions.height}}</h6>
+                        <h6 class="fw-light fs-6">Depth: {{product.dimensions.depth}}</h6>   
+                    </div>
+                  </div>
+                </div>
+                @if(!(product.review))
+                {
+                <div class="accordion-item" style="background-color: #eee;">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #eee;">
+                      Reviews
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @for(reviewer of product.reviews; track reviewer)
+                        {
+                            <div class="card m-2 w-100" style="background-color: #eee;">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{reviewer.reviewerName}}
+                                    @if(reviewer.rating == 1)
+                                  {
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                  }
+                                  @if(reviewer.rating == 2)
+                                  {
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                  }
+                                  @if(reviewer.rating == 3)
+                                  {
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                  }
+                                  @if(reviewer.rating == 4)
+                                  {
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                  }
+                                  @if(reviewer.rating == 5)
+                                  {
+                                      <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                    <span><i class="bi bi-star-fill text-warning fs-5"></i></span>
+                                  }
+                                  </h5>
+                                  <p class="card-text fw-light">date: {{reviewer.date}}</p>
+                                  <p class="card-text">Comment: {{reviewer.comment}}</p>
+                                </div>
+                              </div>
+                        }
+                    </div>
+                  </div>
+                </div>
+            }
+              </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="rating" class="form-label">rating</label>
+          <input type="text" class="form-control" id="rating">
+        </div>
+        <div class="mb-3">
+          <label for="comment" class="form-label">comment</label>
+          <textarea class="form-control" id="comment" rows="3"></textarea>
+        </div>
+        <button class="btn btn-success w-100" (click)="addReview()">add rating</button>
+      </div>
+    </div>
+</div>
+

@@ -60,3 +60,16 @@ mat-icon {
   font-weight: 600;
   text-shadow: 1px 0px 1px black;
 }
+.page-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.left,
+.right {
+  display: block;
+  margin: 20px 15px 10px;
+}
+button:disabled {
+  color: #000000;
+  border-color: #000000;
+}
