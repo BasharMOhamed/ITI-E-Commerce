@@ -8,11 +8,12 @@ import { Product } from '../../app/types/product';
 import e from 'cors';
 import { BehaviorSubject } from 'rxjs';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, TitleCasePipe, MatIconModule, FormsModule,RouterModule],
+  imports: [NgFor, NgIf, TitleCasePipe, MatIconModule, FormsModule,RouterModule,NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
