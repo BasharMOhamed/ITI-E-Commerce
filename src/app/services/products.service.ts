@@ -22,7 +22,7 @@ export class productsService {
 
   updateRating(productId:number,newrating:number)
   {
-    return this.http.put<any>(`https://localhost:4100/api/product/${productId}`, {rating :newrating});
+    return this.http.put<any>(`http://localhost:4100/api/product/${productId}`, {"rating":newrating});
   }
 }
 
