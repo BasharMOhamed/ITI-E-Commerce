@@ -100,7 +100,17 @@ async function updateProduct(id, updates) {
         throw error; 
     }
 }
+async function searchProduct(productSearch) {
+    try {
+        const trimmedSearch = productSearch.trim();
+        const regex = new RegExp(trimmedSearch, 'i'); 
+        const data = await Product.find({ title: { $regex: regex } }); 
+        return data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 
-
-module.exports = { getAllProducts, getProductById, addProduct,deleteProduct,updateProduct};
+module.exports = { getAllProducts, getProductById, addProduct,deleteProduct,updateProduct,searchProduct};

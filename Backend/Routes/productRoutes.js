@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getAllProducts,getProductById,addProduct,deleteProduct,updateProduct} = require('../Controllers/productController'); 
+const {getAllProducts,getProductById,addProduct,deleteProduct,updateProduct,searchProduct} = require('../Controllers/productController'); 
 
 
 
@@ -14,7 +14,7 @@ router.get("/allProducts",async (req,res)=>{
         res.status(500).json({msg: "Error fetching products"});
     });
 })
-router.get("/product/:id", async (req,res)=>{
+router.get("/:id", async (req,res)=>{
     var id = +req.params.id;
    await getProductById(id).then((product) => {
         if (product) {
@@ -40,7 +40,7 @@ router.post("/addproduct", async(req, res)=>{
 
 
 
-router.delete("/product/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         var id = +req.params.id;
         await deleteProduct(id).then(() => {
@@ -53,7 +53,7 @@ router.delete("/product/:id", async (req, res) => {
     }
 });
 
-router.put("/product/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         var data = req.body;
         var id = +req.params.id;
@@ -63,6 +63,21 @@ router.put("/product/:id", async (req, res) => {
             res.status(500).json({msg: "Error updating product"});
         });
     } catch (e) {
+        res.status(500).json({msg: "Something went wrong!"});
+    }
+});
+router.get("/search/:productSearch", async (req, res) => {
+    try {
+        var productSearch = req.params.productSearch;
+        console.log(`Searching for products with term: ${productSearch}`); // Added logging
+        await searchProduct(productSearch).then((products) => {
+            res.json(products);
+        }).catch((error) => {
+            console.error(error); // Log the error for debugging
+            res.status(500).json({msg: "Error searching products"});
+        });
+    } catch (e) {
+        console.error(e); // Log the error for debugging
         res.status(500).json({msg: "Something went wrong!"});
     }
 });
