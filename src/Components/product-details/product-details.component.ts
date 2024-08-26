@@ -43,6 +43,7 @@ export class ProductDetailsComponent {
 
   addRating()
   {
+    this.rating =Math.round(this.rating);
     this.productServ.updateRating(this.id,this.rating).subscribe((response)=>
     {
       console.log(response);

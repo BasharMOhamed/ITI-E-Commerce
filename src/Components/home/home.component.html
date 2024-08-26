@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<div class="container mt-4">
 <div class="home">
   <div class="search">
     <input class="form-control mr-sm-2" type="search" placeholder="Search for product" aria-label="Search"
@@ -30,4 +31,5 @@
       [disabled]="currentPage == 7">Next</button>
   </div>
   <h2 class="noProduct" *ngIf="products.length == 0">No Products Found!</h2>
+</div>
 </div>
