@@ -3,13 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  createUser(userRegisterObj:any):Observable<any>{
-    return this.http.post<any>('http://localhost:4100/api/users/register', userRegisterObj);
+  createUser(userRegisterObj: any): Observable<any> {
+    return this.http.post<any>(
+      'http://localhost:4100/api/users/register',
+      userRegisterObj,
+      { withCredentials: true }
+    );
   }
 }

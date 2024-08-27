@@ -3,32 +3,36 @@ import { HttpClient } from '@angular/common/http';
 import { CartItem } from '../types/cartItem';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
   private backendUrl = 'http://localhost:4100/api/cart';
   items: CartItem[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  init(){
+  init() {
     this.getCart().subscribe((result) => {
       this.items = result;
-    }
-    )
+    });
   }
   getCart(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.backendUrl}/cart`);
+    return this.http.get<CartItem[]>(`${this.backendUrl}/cart`, {
+      withCredentials: true,
+    });
   }
 
   addToCart(productId: string, quantity: number): Observable<any> {
-    return this.http.post(`${this.backendUrl}/cart/${productId}`, { quantity });
+    return this.http.post(
+      `${this.backendUrl}/cart/${productId}`,
+      { quantity },
+      { withCredentials: true }
+    );
   }
 
   removeFromCart(productId: string): Observable<any> {
-    return this.http.delete(`${this.backendUrl}/cart/${productId}`);
+    return this.http.delete(`${this.backendUrl}/cart/${productId}`, {
+      withCredentials: true,
+    });
   }
-
 }

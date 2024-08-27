@@ -4,12 +4,12 @@ const cookieParser = require("cookie-parser");
 const connectDB = require("./Config/database");
 const userRoutes = require("./Routes/userRoutes.js");
 const cartRoutes = require("./Routes/cartRoutes.js");
-const productRoutes = require("./Routes/productRoutes.js"); 
+const productRoutes = require("./Routes/productRoutes.js");
 //const {insertDataFromJson} = require("./Controllers/productController.js");
 const app = express();
 const PORT = 4100;
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:4200", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
