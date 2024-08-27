@@ -9,7 +9,24 @@ const productRoutes = require("./Routes/productRoutes.js");
 const app = express();
 const PORT = 4100;
 
-app.use(cors({ origin: "http://localhost:4200", credentials: true }));
+// app.use(cors({ credentials: true }));
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://iti-e-commerce.vercel.app/",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow credentials (cookies, headers, etc.)
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

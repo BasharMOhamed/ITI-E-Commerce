@@ -7,9 +7,9 @@ import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [NgClass, CommonModule,NavbarComponent],
+  imports: [NgClass, CommonModule, NavbarComponent],
   templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.css'
+  styleUrl: './shopping-cart.component.css',
 })
 export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: CartService) {}
