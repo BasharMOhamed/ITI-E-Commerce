@@ -30,6 +30,7 @@ export class ProductDetailsComponent {
       this.product = response;
       this.rating = this.product.rating;
     });
+    this.cartServ.init();
   }
 
 

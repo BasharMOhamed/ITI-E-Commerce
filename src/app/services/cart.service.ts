@@ -17,21 +17,21 @@ export class CartService {
     });
   }
   getCart(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.backendUrl}/cart`, {
+    return this.http.get<CartItem[]>(`${this.backendUrl}`, {
       withCredentials: true,
     });
   }
 
   addToCart(productId: string, quantity: number): Observable<any> {
     return this.http.post(
-      `${this.backendUrl}/cart/${productId}`,
+      `${this.backendUrl}/${productId}`,
       { quantity },
       { withCredentials: true }
     );
   }
 
   removeFromCart(productId: string): Observable<any> {
-    return this.http.delete(`${this.backendUrl}/cart/${productId}`, {
+    return this.http.delete(`${this.backendUrl}/${productId}`, {
       withCredentials: true,
     });
   }

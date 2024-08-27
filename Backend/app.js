@@ -17,7 +17,7 @@ app.use(cookieParser());
 connectDB();
 //insertDataFromJson()
 app.use("/api/users", userRoutes);
-app.use("/api/cart", cartRoutes);
+app.use("/api", cartRoutes);
 app.use("/api/product", productRoutes);
 
 app.listen(PORT, () => {

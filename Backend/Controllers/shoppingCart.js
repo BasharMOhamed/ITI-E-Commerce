@@ -1,22 +1,43 @@
 const Cart = require('../Models/cart');
+const mongoose = require('mongoose');
 const Product = require('../Models/Product');
 
 //              ADD TO CART
 async function addToCart(userId, productId, quantity) {
-    let product = await cart.findOne({ userId: userId,  'items.productId': productId });
-    if (product) {
-        if (product.items.quantity + quantity <= 0) {
-            await removeFromCart(userId, productId);
-        } else {
-            await cart.findOneAndUpdate({ 'items.productId': productId }, { quantity: product.item.quantity + quantity} );
-        }
-    } else {
-        product = new cart({
-            userId: userId,
-            items: [{ productId, quantity }]
-        });
-        await product.save();
+    console.log('Adding to cart: userId =', userId, ', productId =', productId, ', quantity =', quantity);
+  
+    if (isNaN(productId)) {
+      console.log('Invalid product ID');
+      throw new Error('Invalid product ID');
     }
+  
+    const productNumberId = Number(productId);
+    let cart = await Cart.findOne({ userId: userId, 'items.productId': productNumberId });
+  
+    if (cart) {
+      const itemIndex = cart.items.findIndex(item => item.productId === productNumberId);
+      
+      if (itemIndex > -1) {
+        const newQuantity = cart.items[itemIndex].quantity + quantity;
+  
+        if (newQuantity <= 0) {
+          cart.items.splice(itemIndex, 1);
+        } else {
+          cart.items[itemIndex].quantity = newQuantity;
+        }
+        await cart.save();
+        console.log('Cart updated:', cart);
+      }
+    } else {
+      cart = new Cart({
+        userId: userId,
+        items: [{ productId: productNumberId, quantity }]
+      });
+      await cart.save();
+      console.log('New cart created:', cart);
+    }
+  
+    return cart;
 }
 
 

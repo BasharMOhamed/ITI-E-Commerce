@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../app/services/cart.service';
 import { NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -11,28 +11,28 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
 })
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit {
+  constructor(private cartService: CartService) {}
 
-
-  constructor(private cartService: CartService) { }
-  ngOninit(){
+  ngOnInit() {
     this.cartService.init();
   }
-  get items(){
+
+  get items() {
     return this.cartService.items;
   }
-  
-  addToCart(productId: string, quantity: number){
+
+  addToCart(productId: string, quantity: number) {
     this.cartService.addToCart(productId, quantity).subscribe(() => {
       this.cartService.init();
     });
   }
 
-  get total(){
+  get total() {
     let amount = 0;
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       amount += item.product.price * item.quantity;
     });
     return amount;
-  }   
+  }
 }
