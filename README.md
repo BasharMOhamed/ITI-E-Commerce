@@ -1,27 +1,61 @@
-# ECommerce
+# E-Commerce Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+Shop Express is an ITI summer training project
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. [General Info](#general-info)
+2. [Tools And Technonlgy](#tools)
+3. [Screen shots](#screenshots)
+4. [Collaboration](#team-members)
 
-## Code scaffolding
+### General Info
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+The E-Commerce platform is a comprehensive
+online shopping solution designed to offer a
+seamless and user-friendly experience for both
+customers and administrators. This project enables
+users to browse products, manage their carts, and
+complete purchases online, while providing
+administrators with tools to manage inventory,
+process orders, and analyze sales data.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Tools And Technonlgy
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular [![angular](https://skillicons.dev/icons?i=angular)](https://skillicons.dev)
+- MongoDB [![mango-database](https://skillicons.dev/icons?i=mangodb)](https://skillicons.dev)
+- NodeJS [![nodeJS](https://skillicons.dev/icons?i=nodejs)](https://skillicons.dev)
+- Express [![express](https://skillicons.dev/icons?i=express)](https://skillicons.dev)
+- Bootstrap [![bootstrap](https://skillicons.dev/icons?i=bootstrap)](https://skillicons.dev)
 
-## Running end-to-end tests
+### Screen shots
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+Screen shots from disktop and phone
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![landingPage](./screen_shots/landing_page.png)
+![loginPage](./screen_shots/login.png)
+![SignUpPage](./screen_shots/register.png)
+![productsPage](./screen_shots/products.png)
+![productDetialspage](./screen_shots/disktop.png)
+![productDetialsPhonepage](./screen_shots/phone.png)
+![CartPage](./screen_shots/cart.png)
+
+A video <a href="https://drive.google.com/file/d/1PMe7Egx7gL7OKK5KOIMJXj4VaBwuxhqG/view?usp=drive_link" target="_blank">Here</a>
+
+### Team Members
+
+---
+
+| Name                | Account                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| Abdulrahman Mohamed | @<a href="https://github.com/AbdulrahmanHassan01" target="_blank">AbdulrahmanHassan01</a> |
+| Bashar Mohamed      | @<a href="https://github.com/BasharMOhamed" target="_blank">BasharMOhamed</a>             |
+| Hussien Ahmed       | @<a href="https://github.com/Mina927/" target="_blank">hussien103</a>                     |
+| Seif eldin Ashraf   | @<a href="https://github.com/Seifeldin2510" target="_blank">Seifeldin2510</a>             |
+| Mina Nabil          | @<a href="https://github.com/minasanta" target="_blank">minasanta</a>                     |
