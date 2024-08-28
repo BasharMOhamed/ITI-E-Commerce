@@ -3,6 +3,7 @@ import { CartService } from '../../app/services/cart.service';
 import { NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { CartItem } from '../../app/types/cartItem';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,14 +14,14 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: CartService) {}
-
+  items: CartItem[] = [];
   ngOnInit() {
-    this.cartService.init();
+    this.cartService.getCart().subscribe((result) => {
+      this.items = result;
+      console.log(this.items);
+    });
   }
 
-  get cartItems() {
-    return this.cartService.items;
-  }
 
   addToCart(productId: string, quantity: number) {
     this.cartService.addToCart(productId, quantity).subscribe(() => {
@@ -28,5 +29,7 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
 
-
+ get total() {
+    return Math.round(this.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0));
+  }
 }

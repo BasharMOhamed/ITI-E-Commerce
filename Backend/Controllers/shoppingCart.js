@@ -6,17 +6,17 @@ const Product = require('../Models/Product');
 async function addToCart(userId, productId, quantity) {
     console.log('Adding to cart: userId =', userId, ', productId =', productId, ', quantity =', quantity);
   
-    if (isNaN(productId)) {
-      console.log('Invalid product ID');
-      throw new Error('Invalid product ID');
-    }
-  
     let product = await Cart.findOne({ userId: userId, productId: productId });
   
     if (product) {
+        if (product.quantity + quantity <= 0) {
+            await removeFromCart(userId, productId);
+        } else {
+        Cart.findOneAndUpdate( product._Id , { quantity: product.quantity + quantity });  
       product.quantity += quantity;
       await product.save();
       console.log('Cart updated:', product);
+    }
     } else {
       product = new Cart({
         userId: userId,
@@ -49,7 +49,7 @@ async function getCart(userId) {
     console.log('Cart Items:', products);
     return products.map(x=> {
         return {
-            productId: x.productId,
+            product: x.productId,
             quantity: x.quantity
         };
     });
