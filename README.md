@@ -7,7 +7,7 @@ Shop Express is an ITI summer training project
 1. [General Info](#general-info)
 2. [Tools And Technonlgy](#tools)
 3. [Screen shots](#screenshots)
-4. [Collaboration](#team-members)
+4. [Developers](#team-members)
 
 ### General Info
 
@@ -26,29 +26,49 @@ process orders, and analyze sales data.
 
 ---
 
-- Angular [![angular](https://skillicons.dev/icons?i=angular)](https://skillicons.dev)
-- MongoDB [![mango-database](https://skillicons.dev/icons?i=mangodb)](https://skillicons.dev)
-- NodeJS [![nodeJS](https://skillicons.dev/icons?i=nodejs)](https://skillicons.dev)
-- Express [![express](https://skillicons.dev/icons?i=express)](https://skillicons.dev)
-- Bootstrap [![bootstrap](https://skillicons.dev/icons?i=bootstrap)](https://skillicons.dev)
+- Angular
+- MongoDB
+- NodeJS
+- Express
+- Bootstrap
 
 ### Screen shots
 
 ---
 
-Screen shots from disktop and phone
+Screen shots from desktop and phone
+
+landing Page:
 
 ![landingPage](./screen_shots/landing_page.png)
+
+Login Page:
+
 ![loginPage](./screen_shots/login.png)
+
+Register Page:
+
 ![SignUpPage](./screen_shots/register.png)
+
+Products Page:
+
 ![productsPage](./screen_shots/products.png)
+
+Product Detials Desktop page:
+
 ![productDetialspage](./screen_shots/disktop.png)
+
+Product Detials Phone page:
+
 ![productDetialsPhonepage](./screen_shots/phone.png)
+
+Cart Page:
+
 ![CartPage](./screen_shots/cart.png)
 
 A video <a href="https://drive.google.com/file/d/1PMe7Egx7gL7OKK5KOIMJXj4VaBwuxhqG/view?usp=drive_link" target="_blank">Here</a>
 
-### Team Members
+### Developers
 
 ---
 
