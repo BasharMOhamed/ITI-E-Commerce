@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.init();
   }
 
-  get items() {
+  get cartItems() {
     return this.cartService.items;
   }
 
@@ -28,11 +28,5 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
 
-  get total() {
-    let amount = 0;
-    this.items.forEach((item) => {
-      amount += item.product.price * item.quantity;
-    });
-    return amount;
-  }
+
 }

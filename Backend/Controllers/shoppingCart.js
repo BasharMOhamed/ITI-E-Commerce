@@ -14,7 +14,9 @@ async function addToCart(userId, productId, quantity) {
     let product = await Cart.findOne({ userId: userId, productId: productId });
   
     if (product) {
-      await Cart.findByIdAndUpdate( product._Id, {quantity: product.quantity + quantity});
+      product.quantity += quantity;
+      await product.save();
+      console.log('Cart updated:', product);
     } else {
       product = new Cart({
         userId: userId,
@@ -45,8 +47,13 @@ async function getCart(userId) {
     }
 
     console.log('Cart Items:', products);
-    return products.map(x=>x.productId);
-}
+    return products.map(x=> {
+        return {
+            productId: x.productId,
+            quantity: x.quantity
+        };
+    });
+};
 
 
 module.exports = { addToCart, removeFromCart, getCart };
