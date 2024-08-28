@@ -12,8 +12,8 @@ router.get("/cart", authenticate, async (req, res) => {
     try {
       const userId = req.user.id;
       if (!userId) return res.status(400).json({ error: "User ID is required" });
-      const cart = await getCart(userId);
-      res.json(cart);
+      const product = await getCart(userId);
+      res.send(product);
     } catch (error) {
       console.error("Error in GET /cart:", error); // Log detailed error
       res.status(500).json({ error: "Server error" });

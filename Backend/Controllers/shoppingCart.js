@@ -11,57 +11,41 @@ async function addToCart(userId, productId, quantity) {
       throw new Error('Invalid product ID');
     }
   
-    const productNumberId = Number(productId);
-    let cart = await Cart.findOne({ userId: userId, 'items.productId': productNumberId });
+    let product = await Cart.findOne({ userId: userId, productId: productId });
   
-    if (cart) {
-      const itemIndex = cart.items.findIndex(item => item.productId === productNumberId);
-      
-      if (itemIndex > -1) {
-        const newQuantity = cart.items[itemIndex].quantity + quantity;
-  
-        if (newQuantity <= 0) {
-          cart.items.splice(itemIndex, 1);
-        } else {
-          cart.items[itemIndex].quantity = newQuantity;
-        }
-        await cart.save();
-        console.log('Cart updated:', cart);
-      }
+    if (product) {
+      await Cart.findByIdAndUpdate( product._Id, {quantity: product.quantity + quantity});
     } else {
-      cart = new Cart({
+      product = new Cart({
         userId: userId,
-        items: [{ productId: productNumberId, quantity }]
+        productId: productId, 
+        quantity: quantity
       });
-      await cart.save();
-      console.log('New cart created:', cart);
+      await product.save();
+      console.log('New cart created:', product);
     }
   
-    return cart;
+    return product;
 }
 
 
 //              REMOVE FROM CART
 async function removeFromCart(userId, productId) {
-    await Cart.findOneAndUpdate({ userId: userId }, { $pull: { items: { productId: productId } } });
+    await Cart.findOneAndDelete({ userId: userId, productId: productId });
 }
 
 
 
 //              GET CART
 async function getCart(userId) {
-    const cart = await Cart.findOne({ userId: userId }).populate('items.productId');
+    const products = await Cart.find({ userId: userId }).populate('productId');
     
-    if (!cart) {
+    if (!products) {
         return [];
     }
 
-    return cart.items.map(item => {
-        return {
-            product: item.productId,
-            quantity: item.quantity
-        };
-    });
+    console.log('Cart Items:', products);
+    return products.map(x=>x.productId);
 }
 
 
