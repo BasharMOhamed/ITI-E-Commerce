@@ -36,7 +36,7 @@ export class ProductDetailsComponent {
 
   addToCart()
   {
-    this.cartServ.addToCart(String(this.id) , this.quantity).subscribe((response)=>
+    this.cartServ.addToCart(String(this.product._id) , this.quantity).subscribe((response)=>
     {
       console.log(response);
     }) ;
