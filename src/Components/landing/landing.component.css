@@ -1,7 +1,73 @@
 .bodyImage
 {
-    background: url("https://images.pexels.com/photos/5632371/pexels-photo-5632371.jpeg?cs=srgb&dl=pexels-karolina-grabowska-5632371.jpg&fm=jpg") no-repeat 50% 50%;
+    display: block;
+    background: url("../../../public/landing.avif")
+    no-repeat 50% 50%;
     height: 100%;
     width: 100%;
     background-size: cover;
+    position: relative;
+}
+.center-in {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+.heading {
+  color: #f12c1d;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 400ms;
+  margin: 0;
+}
+.heading:hover {
+  color: #ffc107;
+  text-shadow: 2px 2px 4px #000000;
+}
+.buy-p {
+  color: #d9463b;
+  font-size: 1.2rem;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.shop-btn {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  letter-spacing: 5px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+@media (max-width: 1000px) {
+  .shop-btn {
+    width: 80%;
+  }
+}
+@media (max-width: 720px) {
+  .heading {
+    font-size: 30px;
+  }
+
+  .buy-p {
+    font-size: 15px;
+  }
+  .shop-btn {
+    width: 100%;
+  }
+}
+
+.shop-btn:hover {
+  background-color: #17b85a;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
